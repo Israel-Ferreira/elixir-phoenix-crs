@@ -8,10 +8,17 @@ defmodule FizzBuzz do
   def handle_file_read({:ok, result}) do
     result
     |> split_file_content()
-    |> Enum.map(fn x -> fizz_buzz(x) end)
   end
 
-  def handle_file_read({:error, reason}), do: reason
+
+  def handle_file_read({:error, reason}), do: "Error on Reading File: #{reason}"
+
+  def convert_and_evaluate(str_number) do
+    str_number
+    |> String.to_integer()
+    |> fizz_buzz()
+  end
+
 
   def fizz_buzz(num) when rem(num, 3) == 0 and rem(num, 5) == 0, do: "FizzBuzz"
 
@@ -24,6 +31,6 @@ defmodule FizzBuzz do
   def split_file_content(result) do
     result
     |> String.split(",")
-    |> Enum.map(&String.to_integer/1)
+    |> Enum.map(&convert_and_evaluate/1)
   end
 end
