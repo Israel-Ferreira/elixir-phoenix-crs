@@ -20,11 +20,11 @@ defmodule FizzBuzz do
   end
 
 
-  def fizz_buzz(num) when rem(num, 3) == 0 and rem(num, 5) == 0, do: "FizzBuzz"
+  def fizz_buzz(num) when rem(num, 3) == 0 and rem(num, 5) == 0, do: :fizzbuzz
 
-  def fizz_buzz(num) when rem(num, 5) == 0, do: "Buzz"
+  def fizz_buzz(num) when rem(num, 5) == 0, do: :buzz
 
-  def fizz_buzz(num) when rem(num, 3) == 0, do: "Fizz"
+  def fizz_buzz(num) when rem(num, 3) == 0, do: :fizz
 
   def fizz_buzz(num), do: num
 
