@@ -10,7 +10,6 @@ defmodule FizzBuzz do
     {:ok, res}
   end
 
-
   defp handle_file_read({:error, reason}), do: {:error, "Error on Reading File: #{reason}"}
 
   defp convert_and_evaluate(str_number) do
@@ -18,7 +17,6 @@ defmodule FizzBuzz do
     |> String.to_integer()
     |> fizz_buzz()
   end
-
 
   def fizz_buzz(num) when rem(num, 3) == 0 and rem(num, 5) == 0, do: :fizzbuzz
 
