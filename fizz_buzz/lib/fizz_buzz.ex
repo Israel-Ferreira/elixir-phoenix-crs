@@ -5,15 +5,15 @@ defmodule FizzBuzz do
     |> handle_file_read()
   end
 
-  def handle_file_read({:ok, result}) do
-    result
-    |> split_file_content()
+  defp handle_file_read({:ok, result}) do
+    res = result |> split_file_content()
+    {:ok, res}
   end
 
 
-  def handle_file_read({:error, reason}), do: "Error on Reading File: #{reason}"
+  defp handle_file_read({:error, reason}), do: {:error, "Error on Reading File: #{reason}"}
 
-  def convert_and_evaluate(str_number) do
+  defp convert_and_evaluate(str_number) do
     str_number
     |> String.to_integer()
     |> fizz_buzz()
@@ -28,7 +28,7 @@ defmodule FizzBuzz do
 
   def fizz_buzz(num), do: num
 
-  def split_file_content(result) do
+  defp split_file_content(result) do
     result
     |> String.split(",")
     |> Enum.map(&convert_and_evaluate/1)
